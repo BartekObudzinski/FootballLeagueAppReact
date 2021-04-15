@@ -1,13 +1,12 @@
 import React from "react";
-import { Nav, NavLink, Bars, NavMenu } from "./NavbarElements";
+import { Nav, NavLink, NavMenu } from "./NavbarElements";
 const Navbar = () => {
   return (
     <>
       <Nav>
         <NavLink to="/">
-          <h1>Logo</h1>
+          <h1>Footbal League</h1>
         </NavLink>
-        <Bars />
         <NavMenu>
           <NavLink to="/home" activeStyle>
             Home
