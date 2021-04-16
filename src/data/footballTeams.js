@@ -1,6 +1,7 @@
 export const footballTeams = [
   {
     name: "Joga Bonito",
+    shortName: "JBO",
     town: "Trzcianka",
     matches: 0,
     wins: 0,
@@ -12,6 +13,7 @@ export const footballTeams = [
   },
   {
     name: "Gazyl Mistrze",
+    shortName: "GAM",
     town: "Brańszczyk",
     matches: 0,
     wins: 0,
@@ -23,6 +25,7 @@ export const footballTeams = [
   },
   {
     name: "Trzcianka Zielone Łąki",
+    shortName: "TZŁ",
     town: "Trzcianka",
     matches: 0,
     wins: 0,
@@ -34,7 +37,32 @@ export const footballTeams = [
   },
   {
     name: "FC Brańszczyk",
+    shortName: "FCB",
     town: "Brańszczyk",
+    matches: 0,
+    wins: 0,
+    draws: 0,
+    loses: 0,
+    goalScored: 0,
+    goalLoses: 0,
+    points: 0,
+  },
+  {
+    name: "FC Nowe Budy",
+    shortName: "FNB",
+    town: "Nowe Budy",
+    matches: 0,
+    wins: 0,
+    draws: 0,
+    loses: 0,
+    goalScored: 0,
+    goalLoses: 0,
+    points: 0,
+  },
+  {
+    name: "Jawor",
+    shortName: "JAW",
+    town: "Jawor",
     matches: 0,
     wins: 0,
     draws: 0,

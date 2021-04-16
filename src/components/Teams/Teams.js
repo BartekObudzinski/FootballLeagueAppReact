@@ -1,11 +1,11 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-const Home = () => {
+const Teams = () => {
   return (
     <Container>
-      <h1>elo dziwki</h1>
+      <h1>Teams</h1>
     </Container>
   );
 };
 
-export default Home;
+export default Teams;

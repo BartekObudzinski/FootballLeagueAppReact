@@ -1,11 +1,11 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-const Home = () => {
+const Schedule = () => {
   return (
     <Container>
-      <h1>elo dziwki</h1>
+      <h1>schedule</h1>
     </Container>
   );
 };
 
-export default Home;
+export default Schedule;
