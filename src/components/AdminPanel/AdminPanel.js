@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Accordion, Card } from "react-bootstrap";
 import { BsPlusSquare } from "react-icons/bs";
+import AddMatch from "./AddMatch";
 const AdminPanel = () => {
   return (
     <Container>
@@ -10,7 +11,9 @@ const AdminPanel = () => {
             <BsPlusSquare /> Add a match!
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
-            <Card.Body>tu se normlanie bede mecza dodawal</Card.Body>
+            <Card.Body>
+              <AddMatch />
+            </Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card>
