@@ -2,7 +2,9 @@ import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Navigation.module.css";
+import { useHistory } from "react-router";
 const Navigation = () => {
+  const history = useHistory();
   return (
     <>
       <Container>
@@ -11,10 +13,14 @@ const Navigation = () => {
             Football League
           </Navbar.Brand>
           <Nav>
-            <Nav.Link href="/teams">Teams</Nav.Link>
-            <Nav.Link href="/schedule">Schedule</Nav.Link>
-            <Nav.Link href="/table">Table</Nav.Link>
-            <Nav.Link href="/admin-panel">Panel Admin</Nav.Link>
+            <Nav.Link onClick={() => history.push("/teams")}>Teams</Nav.Link>
+            <Nav.Link onClick={() => history.push("/schedule")}>
+              Schedule
+            </Nav.Link>
+            <Nav.Link onClick={() => history.push("/table")}>Table</Nav.Link>
+            <Nav.Link onClick={() => history.push("/admin-panel")}>
+              Panel Admin
+            </Nav.Link>
           </Nav>
         </Navbar>
       </Container>

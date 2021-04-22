@@ -44,14 +44,3 @@ const Table = () => {
 };
 
 export default Table;
-
-<SingleTableRecord
-  name="sraka"
-  matches={1}
-  wins={1}
-  draws={1}
-  loses={1}
-  goalScored={1}
-  goalLoses={1}
-  points={1}
-/>;
