@@ -4,10 +4,10 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormTeamOption from "./FormTeamOption";
 
 const AddMatch = ({ match, setMatch }) => {
-  const [hostFootball, setHostFootball] = useState();
-  const [guestFootball, setGuestFootball] = useState();
-  const [dateMatch, setDateMatch] = useState();
-  const [timeMatch, setTimeMatch] = useState();
+  const [hostFootball, setHostFootball] = useState("");
+  const [guestFootball, setGuestFootball] = useState("");
+  const [dateMatch, setDateMatch] = useState("");
+  const [timeMatch, setTimeMatch] = useState("");
 
   const AddSingleMatch = (e) => {
     e.preventDefault();
@@ -21,8 +21,9 @@ const AddMatch = ({ match, setMatch }) => {
         time: timeMatch,
       },
     ]);
-    console.log("added match");
+    console.log("added");
   };
+
   return (
     <Form>
       <Form.Group controlId="exampleForm.ControlSelect1">
@@ -66,7 +67,6 @@ const AddMatch = ({ match, setMatch }) => {
       <Button onClick={AddSingleMatch} variant="primary" type="submit">
         Add
       </Button>
-      <Button onClick={() => console.log(match.length)}>asdasd</Button>
     </Form>
   );
 };

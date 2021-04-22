@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Col, Row } from "react-bootstrap";
-const FormWeek = ({ week, setWeek }) => {
+import { v4 as weekId } from "uuid";
+const FormWeek = ({ week, setWeek, handleRemove }) => {
   const [weekName, setWeekName] = useState("");
   const [weekDate, setWeekDate] = useState("");
   const AddSingleWeek = (e) => {
@@ -8,13 +9,13 @@ const FormWeek = ({ week, setWeek }) => {
     setWeek([
       ...week,
       {
+        idWeek: weekId(),
         nameWeek: weekName,
         dateWeek: weekDate,
       },
     ]);
   };
 
-  const weekData = Array.from(week);
   return (
     <Form>
       <Form.Group controlId="formBasicEmail">
@@ -35,15 +36,17 @@ const FormWeek = ({ week, setWeek }) => {
       <Button variant="primary" type="submit" onClick={AddSingleWeek}>
         Submit
       </Button>
-      {weekData.map((weekSettings) => (
+      {week.map((weekSettings) => (
         <Row>
           <Col xs={12} md={8}>
             <div>{weekSettings.nameWeek}</div>
             <div>{weekSettings.dateWeek}</div>
           </Col>
           <Col xs={6} md={4}>
-            <Button>Edit</Button>
-            <Button>Delete</Button>
+            <Button onClick={() => console.log(...week)}>Edit</Button>
+            <Button onClick={() => handleRemove(weekSettings.idWeek)}>
+              Delete
+            </Button>
           </Col>
         </Row>
       ))}
