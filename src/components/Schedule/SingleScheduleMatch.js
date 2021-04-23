@@ -5,12 +5,12 @@ const SingleScheduleMatch = ({ host, guest, time, date, dateWeek }) => {
     <>
       {dateWeek && (
         <div className={styles.wrapper}>
-          <div classname={styles.wrapper_host}>{host}</div>
           <div classname={styles.wrapperDate}>
             <div className={styles.date}>{date}</div>
-            <div className={styles.time}>{time}</div>
           </div>
-          <div classname={styles.guest}>{guest}</div>
+          <div classname={styles.wrapper_match}>{`${host} vs ${guest}`}</div>
+
+          <div classname={styles.result}>{time}</div>
         </div>
       )}
     </>

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form, Col, Row } from "react-bootstrap";
 import { v4 as weekId } from "uuid";
+import FormWeekEdit from "./FormWeekEdit";
 const FormWeek = ({ week, setWeek, handleRemove }) => {
   const [weekName, setWeekName] = useState("");
   const [weekDate, setWeekDate] = useState("");
+  const [weekEdit, setWeekEdit] = useState();
   const AddSingleWeek = (e) => {
     e.preventDefault();
     setWeek([
@@ -36,20 +38,30 @@ const FormWeek = ({ week, setWeek, handleRemove }) => {
       <Button variant="primary" type="submit" onClick={AddSingleWeek}>
         Submit
       </Button>
-      {week.map((weekSettings) => (
-        <Row>
-          <Col xs={12} md={8}>
-            <div>{weekSettings.nameWeek}</div>
-            <div>{weekSettings.dateWeek}</div>
-          </Col>
-          <Col xs={6} md={4}>
-            <Button onClick={() => console.log(...week)}>Edit</Button>
-            <Button onClick={() => handleRemove(weekSettings.idWeek)}>
-              Delete
-            </Button>
-          </Col>
-        </Row>
-      ))}
+      {week.map((weekSettings) =>
+        weekSettings.idWeek !== weekEdit ? (
+          <Row>
+            <Col xs={12} md={8}>
+              <div>{weekSettings.nameWeek}</div>
+              <div>{weekSettings.dateWeek}</div>
+            </Col>
+            <Col xs={6} md={4}>
+              <Button
+                onClick={() => {
+                  setWeekEdit(weekSettings.idWeek);
+                }}
+              >
+                Edit
+              </Button>
+              <Button onClick={() => handleRemove(weekSettings.idWeek)}>
+                Delete
+              </Button>
+            </Col>
+          </Row>
+        ) : (
+          <FormWeekEdit weekSettings={weekSettings} setWeekEdit={setWeekEdit} />
+        )
+      )}
     </Form>
   );
 };

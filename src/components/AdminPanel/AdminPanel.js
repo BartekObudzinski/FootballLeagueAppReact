@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Accordion, Card, Row, Col, Button } from "react-bootstrap";
+import { Container, Accordion, Card } from "react-bootstrap";
 import { BsPlusSquare } from "react-icons/bs";
 import AddMatch from "./AddMatch";
 import FormWeek from "./FormWeek";
-import SingleScheduleMatch from "../Schedule/SingleScheduleMatch";
-import styles from "./AdminPanel.module.css";
+
+import FormResult from "./FormResult";
+
 const AdminPanel = ({ match, setMatch, week, setWeek }) => {
   const handleRemoveWeek = (itemId) => {
     setWeek(week.filter((item) => item.idWeek !== itemId));
@@ -13,6 +14,7 @@ const AdminPanel = ({ match, setMatch, week, setWeek }) => {
   const handleRemoveMatch = (matchId) => {
     setMatch(match.filter((item) => item.idMatch !== matchId));
   };
+
   return (
     <Container>
       <Accordion defaultActiveKey>
@@ -22,7 +24,7 @@ const AdminPanel = ({ match, setMatch, week, setWeek }) => {
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              <AddMatch match={match} setMatch={setMatch} />
+              <AddMatch match={match} setMatch={setMatch} week={week} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -31,32 +33,7 @@ const AdminPanel = ({ match, setMatch, week, setWeek }) => {
             <BsPlusSquare /> Change a result!
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
-            <Card.Body>
-              {match.map((singleMatch) => (
-                <Row className={styles.wrapper}>
-                  <Col>
-                    <SingleScheduleMatch
-                      key={singleMatch.idMatch}
-                      host={singleMatch.host}
-                      guest={singleMatch.guest}
-                      time={singleMatch.time}
-                      date={singleMatch.date}
-                      dateWeek={singleMatch.date}
-                    />
-                  </Col>
-                  <Col>
-                    <Button>Edit Match</Button>
-                    <Button
-                      onClick={() => {
-                        handleRemoveMatch(singleMatch.idMatch);
-                      }}
-                    >
-                      Delete Match
-                    </Button>
-                  </Col>
-                </Row>
-              ))}
-            </Card.Body>
+            <FormResult match={match} handleRemoveMatch={handleRemoveMatch} />
           </Accordion.Collapse>
         </Card>
         <Card>
