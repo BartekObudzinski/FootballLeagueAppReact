@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Tab, Tabs, Button } from "react-bootstrap";
+import { Container, Tab, Tabs } from "react-bootstrap";
 import SingleScheduleMatch from "./SingleScheduleMatch";
 
 const Schedule = ({ match, week }) => {
@@ -30,16 +30,10 @@ const Schedule = ({ match, week }) => {
                       time={singleMatch.time}
                       date={singleMatch.date}
                       dateWeek={singleWeek.dateWeek}
+                      singleMatch={singleMatch}
                     />
                   )
               )}
-              <Button
-                onClick={() => {
-                  console.log(`liczba meczy ${match.length} `);
-                }}
-              >
-                saads
-              </Button>
             </Tab>
           ))}
       </Tabs>

@@ -1,5 +1,5 @@
 import React from "react";
-import { footballTeams } from "../../data/footballTeams";
+import { footballTeams } from "../../../data/footballTeams";
 
 const FormTeamOption = () => {
   return footballTeams.map((team) => (

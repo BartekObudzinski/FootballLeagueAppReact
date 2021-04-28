@@ -1,0 +1,15 @@
+.wrapper {
+  border-bottom: 1px black solid;
+  margin-top: 10px;
+}
+
+.buttonWrapper {
+  display: flex;
+}
+
+.button {
+  flex-direction: row;
+  margin: auto;
+  width: 100px;
+  height: 50px;
+}

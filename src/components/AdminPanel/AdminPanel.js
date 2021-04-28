@@ -2,9 +2,9 @@ import React from "react";
 import { Container, Accordion, Card } from "react-bootstrap";
 import { BsPlusSquare } from "react-icons/bs";
 import AddMatch from "./AddMatch";
-import FormWeek from "./FormWeek";
+import FormWeek from "./FormWeek/FormWeek.js";
 
-import FormResult from "./FormResult";
+import FormResult from "./FormResult/FormResult";
 
 const AdminPanel = ({ match, setMatch, week, setWeek }) => {
   const handleRemoveWeek = (itemId) => {
@@ -33,7 +33,11 @@ const AdminPanel = ({ match, setMatch, week, setWeek }) => {
             <BsPlusSquare /> Change a result!
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
-            <FormResult match={match} handleRemoveMatch={handleRemoveMatch} />
+            <FormResult
+              match={match}
+              week={week}
+              handleRemoveMatch={handleRemoveMatch}
+            />
           </Accordion.Collapse>
         </Card>
         <Card>

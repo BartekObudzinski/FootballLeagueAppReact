@@ -1,7 +1,11 @@
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border: 1px black solid;
-  margin: 20px;
+  height: 75px;
+}
+.wrapper_match {
+  font-size: 2rem;
+}
+
+.wrapperDate {
+  border: 1px black solid;
 }

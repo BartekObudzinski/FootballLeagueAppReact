@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as matchId } from "uuid";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import FormTeamOption from "./FormTeamOption";
-import FormWeekOption from "./FormWeekOption";
+import FormTeamOption from "./FormOption/FormTeamOption";
+import FormWeekOption from "./FormOption/FormWeekOption";
 const AddMatch = ({ match, setMatch, week }) => {
   const [hostFootball, setHostFootball] = useState("");
   const [guestFootball, setGuestFootball] = useState("");
@@ -21,6 +21,7 @@ const AddMatch = ({ match, setMatch, week }) => {
         time: timeMatch,
         hostGoals: 0,
         guestGoals: 0,
+        matchHappend: false,
       },
     ]);
     console.log("added");
@@ -28,7 +29,7 @@ const AddMatch = ({ match, setMatch, week }) => {
 
   return (
     <Form>
-      <Form.Group controlId="exampleForm.ControlSelect1">
+      <Form.Group>
         <Form.Label>Football host</Form.Label>
         <Form.Control
           as="select"
@@ -37,7 +38,7 @@ const AddMatch = ({ match, setMatch, week }) => {
           <FormTeamOption />
         </Form.Control>
       </Form.Group>
-      <Form.Group controlId="exampleForm.ControlSelect1">
+      <Form.Group>
         <Form.Label>Football guest</Form.Label>
         <Form.Control
           as="select"
@@ -48,7 +49,7 @@ const AddMatch = ({ match, setMatch, week }) => {
       </Form.Group>
       <Row>
         <Col>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
             <Form.Label>Date</Form.Label>
             <Form.Control
               as="select"
@@ -59,7 +60,7 @@ const AddMatch = ({ match, setMatch, week }) => {
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
             <Form.Label>Time</Form.Label>
             <Form.Control
               type="time"
