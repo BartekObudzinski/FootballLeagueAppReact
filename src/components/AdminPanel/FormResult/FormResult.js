@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Row, Col, Button, Container, Form } from "react-bootstrap";
+import { Card, Row, Col, Container, Form } from "react-bootstrap";
 import styles from "./FormResult.module.css";
 import SingleScheduleMatch from "../../Schedule/SingleScheduleMatch";
 import FormResultEdit from "../FormResultEdit/FormResultEdit";
@@ -30,20 +30,19 @@ const FormResult = ({ match, week, handleRemoveMatch }) => {
             <Container>
               <Row className={styles.wrapper}>
                 <Col>
-                  <Button
-                    className={styles.button}
-                    onClick={() => setResultEdit(singleMatch.idMatch)}
-                  >
-                    <AiFillEdit />
-                  </Button>
-                  <Button
-                    className={styles.button}
-                    onClick={() => {
-                      handleRemoveMatch(singleMatch.idMatch);
-                    }}
-                  >
-                    <AiTwotoneDelete />
-                  </Button>
+                  <Col className={styles.wrapperButton}>
+                    <AiFillEdit
+                      className={styles.button}
+                      onClick={() => setResultEdit(singleMatch.idMatch)}
+                    />
+
+                    <AiTwotoneDelete
+                      className={styles.button}
+                      onClick={() => {
+                        handleRemoveMatch(singleMatch.idMatch);
+                      }}
+                    />
+                  </Col>
                 </Col>
                 <Col>
                   <SingleScheduleMatch

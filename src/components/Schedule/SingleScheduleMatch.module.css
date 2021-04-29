@@ -1,11 +1,23 @@
 .wrapper {
-  border: 1px black solid;
-  height: 75px;
-}
-.wrapper_match {
-  font-size: 2rem;
+  background-color: #343a40;
+  height: 100px;
+
+  color: #aaaeb3;
+  border-bottom: 5px rgb(211, 206, 206) solid;
 }
 
-.wrapperDate {
-  border: 1px black solid;
+.teamWrapper {
+  color: rgb(211, 206, 206);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  line-height: 100px;
+}
+
+.resultWrapper {
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  color: white;
+  line-height: 100px;
 }

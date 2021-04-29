@@ -14,6 +14,31 @@ const SingleScheduleMatch = ({
       {dateWeek && (
         <Container className={styles.wrapper}>
           <Row>
+            <Col className={styles.teamWrapper}>
+              <p>{host}</p>
+            </Col>
+            <Col>
+              {singleMatch.matchHappend ? (
+                <Col
+                  className={styles.resultWrapper}
+                >{`${singleMatch.hostGoals}:${singleMatch.guestGoals}`}</Col>
+              ) : (
+                <Col className={styles.resultWrapper}>{time}</Col>
+              )}
+            </Col>
+            <Col className={styles.teamWrapper}>
+              <p>{guest}</p>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </>
+  );
+};
+
+export default SingleScheduleMatch;
+
+/*<Row>
             <Col classname={styles.wrapperDate}>
               <div className={styles.date}>{date}</div>
             </Col>
@@ -28,11 +53,4 @@ const SingleScheduleMatch = ({
             ) : (
               <Col classname={styles.result}>{time}</Col>
             )}
-          </Row>
-        </Container>
-      )}
-    </>
-  );
-};
-
-export default SingleScheduleMatch;
+          </Row> */
