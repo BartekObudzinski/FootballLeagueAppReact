@@ -5,9 +5,15 @@ import SingleScheduleMatch from "../../Schedule/SingleScheduleMatch";
 import FormResultEdit from "../FormResultEdit/FormResultEdit";
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import FormWeekOption from "../FormOption/FormWeekOption";
-const FormResult = ({ match, week, handleRemoveMatch }) => {
+import NoteToggle from "../../MatchNote/NoteToggle/NoteToggle";
+import Note from "../../MatchNote/Note/Note";
+import AddNote from "../../MatchNote/AddNote/AddNote";
+
+const FormResult = ({ match, week, handleRemoveMatch, note, setNote }) => {
   const [resultEdit, setResultEdit] = useState();
-  const [chooseWeek, setChooseWeek] = useState("");
+  const [chooseWeek, setChooseWeek] = useState(week[0].dateWeek);
+  const [showNote, setShowNote] = useState();
+
   return (
     <Card.Body>
       <Row>
@@ -31,6 +37,10 @@ const FormResult = ({ match, week, handleRemoveMatch }) => {
               <Row className={styles.wrapper}>
                 <Col>
                   <Col className={styles.wrapperButton}>
+                    <Col className={styles.buttonDate}>
+                      {`${singleMatch.date}
+                       | ${singleMatch.time}`}
+                    </Col>
                     <AiFillEdit
                       className={styles.button}
                       onClick={() => setResultEdit(singleMatch.idMatch)}
@@ -54,6 +64,21 @@ const FormResult = ({ match, week, handleRemoveMatch }) => {
                     dateWeek={singleMatch.date}
                     singleMatch={singleMatch}
                   />
+                  {singleMatch.idMatch !== showNote ? (
+                    <NoteToggle
+                      onClick={() => setShowNote(singleMatch.idMatch)}
+                    />
+                  ) : (
+                    <>
+                      <Note />
+                      <AddNote
+                        noteId={singleMatch.idMatch}
+                        note={note}
+                        setNote={setNote}
+                      />
+                      <NoteToggle onClick={() => setShowNote()} />
+                    </>
+                  )}
                 </Col>
               </Row>
             </Container>
@@ -61,6 +86,7 @@ const FormResult = ({ match, week, handleRemoveMatch }) => {
             <FormResultEdit
               singleMatch={singleMatch}
               setResultEdit={setResultEdit}
+              week={week}
             />
           ))
       )}

@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import styles from "./FormResultEdit.module.css";
 import { Container, Row, Button, Col, Form } from "react-bootstrap";
-const FormResultEdit = ({ singleMatch, setResultEdit }) => {
+import FormWeekOption from "../FormOption/FormWeekOption";
+import FormTeamOption from "../FormOption/FormTeamOption";
+const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
   const [editHostResult, setEditHostResult] = useState(singleMatch.hostGoals);
   const [editGuestResult, setEditGuestResult] = useState(
     singleMatch.guestGoals
   );
+  const [editHost, setEditHost] = useState(singleMatch.host);
+  const [editGuest, setEditGuest] = useState(singleMatch.guest);
+  const [editDate, setEditDate] = useState(singleMatch.date);
+  const [editTime, setEditTime] = useState(singleMatch.time);
 
   const [happend, setHappend] = useState(singleMatch.matchHappend);
 
@@ -13,6 +19,10 @@ const FormResultEdit = ({ singleMatch, setResultEdit }) => {
     singleMatch.hostGoals = editHostResult;
     singleMatch.guestGoals = editGuestResult;
     singleMatch.matchHappend = happend;
+    singleMatch.host = editHost;
+    singleMatch.guest = editGuest;
+    singleMatch.date = editDate;
+    singleMatch.time = editTime;
     setResultEdit();
   };
 
@@ -22,27 +32,73 @@ const FormResultEdit = ({ singleMatch, setResultEdit }) => {
     <Col>
       <Container>
         <Row className={styles.wrapper}>
-          <Col className={styles.teamWrapper}>{singleMatch.host}</Col>
+          <Col className={styles.teamWrapper}>
+            <Form.Group>
+              <Form.Control
+                as="select"
+                value={editHost}
+                onChange={(e) => setEditHost(e.target.value)}
+              >
+                <FormTeamOption />
+              </Form.Control>
+            </Form.Group>
+          </Col>
           <Col className={styles.result}>
-            <Col xs={6} md={4}>
-              <Form.Control
-                type="number"
-                value={editHostResult}
-                placeholder="host"
-                onChange={(e) => setEditHostResult(e.target.value)}
-              />
+            <Col className={styles.resultWrapper}>
+              <Col xs={6} md={4}>
+                <Form.Control
+                  type="number"
+                  value={editHostResult}
+                  placeholder="host"
+                  onChange={(e) => setEditHostResult(e.target.value)}
+                />
+              </Col>
+              vs
+              <Col xs={6} md={4}>
+                <Form.Control
+                  type="number"
+                  value={editGuestResult}
+                  placeholder="host"
+                  onChange={(e) => setEditGuestResult(e.target.value)}
+                />
+              </Col>
             </Col>
-            vs
-            <Col xs={6} md={4}>
-              <Form.Control
-                type="number"
-                value={editGuestResult}
-                placeholder="host"
-                onChange={(e) => setEditGuestResult(e.target.value)}
-              />
+            <Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={editDate}
+                    onChange={(e) => setEditDate(e.target.value)}
+                  >
+                    <FormWeekOption week={week} />
+                  </Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Time</Form.Label>
+                  <Form.Control
+                    type="time"
+                    value={editTime}
+                    onChange={(e) => setEditTime(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
             </Col>
           </Col>
-          <Col className={styles.teamWrapper}>{singleMatch.guest}</Col>
+          <Col className={styles.teamWrapper}>
+            <Form.Group>
+              <Form.Control
+                as="select"
+                value={editGuest}
+                onChange={(e) => setEditGuest(e.target.value)}
+              >
+                <FormTeamOption />
+              </Form.Control>
+            </Form.Group>
+          </Col>
           <Col className={styles.buttonsWrapper} md={1.5}>
             <input
               type="checkbox"
@@ -59,33 +115,3 @@ const FormResultEdit = ({ singleMatch, setResultEdit }) => {
 };
 
 export default FormResultEdit;
-/*<div className={styles.wrapper}>
-      <div classname={styles.wrapperDate}>
-        <div className={styles.date}>{singleMatch.date}</div>
-      </div>
-      <div
-        classname={styles.wrapper_match}
-      >{`${singleMatch.host} vs ${singleMatch.guest}`}</div>
-
-      <div classname={styles.result}>
-        <Col xs={6} md={4}>
-          <Form.Control
-            type="number"
-            value={editHostResult}
-            placeholder="host"
-            onChange={(e) => setEditHostResult(e.target.value)}
-          />
-        </Col>
-        vs
-        <Col xs={6} md={4}>
-          <Form.Control
-            type="number"
-            value={editGuestResult}
-            placeholder="host"
-            onChange={(e) => setEditGuestResult(e.target.value)}
-          />
-        </Col>
-      </div>
-      <input type="checkbox" checked={happend} onClick={handleHappend} />
-      <Button onClick={confirmEdit}>Confirm</Button>
-    </div>*/

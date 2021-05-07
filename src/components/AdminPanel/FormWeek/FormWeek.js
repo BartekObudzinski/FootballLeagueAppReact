@@ -4,8 +4,8 @@ import { v4 as weekId } from "uuid";
 import FormWeekEdit from "../FormWeekEdit/FormWeekEdit";
 import styles from "./FormWeek.module.css";
 const FormWeek = ({ week, setWeek, handleRemove }) => {
-  const [weekName, setWeekName] = useState("");
-  const [weekDate, setWeekDate] = useState("");
+  const [weekName, setWeekName] = useState("Week...");
+  const [weekDate, setWeekDate] = useState("2021-01-01");
   const [weekEdit, setWeekEdit] = useState();
   const AddSingleWeek = (e) => {
     setWeek([
@@ -34,7 +34,7 @@ const FormWeek = ({ week, setWeek, handleRemove }) => {
             <Form.Label>Week Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Week name"
+              placeholder="Week..."
               onChange={(e) => setWeekName(e.target.value)}
             />
           </Form.Group>

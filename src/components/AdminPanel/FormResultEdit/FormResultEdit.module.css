@@ -4,14 +4,21 @@
   align-items: center;
 
   background-color: #343a40;
-  height: 125px;
+  height: 225px;
   color: #aaaeb3;
   border-bottom: 5px rgb(211, 206, 206) solid;
 }
 
 .result {
   display: flex;
+  flex-direction: column;
+}
+
+.resultWrapper {
+  display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .teamWrapper {

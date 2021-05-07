@@ -9,9 +9,13 @@ import Table from "./components/Table/Table";
 import Footer from "./components/Footer/Footer";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 function App() {
   const [match, setMatch] = useState([]);
-  const [week, setWeek] = useState([]);
+  const [week, setWeek] = useState([
+    { idWeek: "srubasabadaba", nameWeek: "Week...", dateWeek: "2021-01-01" },
+  ]);
+  const [note, setNote] = useState([]);
 
   return (
     <Router>
@@ -23,9 +27,10 @@ function App() {
         <Route
           path="/schedule"
           exact
-          component={() => <Schedule match={match} week={week} />}
+          component={() => <Schedule match={match} week={week} note={note} />}
         />
         <Route path="/table" exact component={Table} />
+
         <Route
           path="/admin-panel"
           exact
@@ -35,6 +40,8 @@ function App() {
               setMatch={setMatch}
               week={week}
               setWeek={setWeek}
+              note={note}
+              setNote={setNote}
             />
           )}
         />

@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Container, Tab, Tabs, Row, Col } from "react-bootstrap";
 import SingleScheduleMatch from "./SingleScheduleMatch";
 import styles from "./Schedule.module.css";
-const Schedule = ({ match, week }) => {
+import NoteToggle from "../MatchNote/NoteToggle/NoteToggle";
+import Note from "../MatchNote/Note/Note";
+import AddNote from "../MatchNote/AddNote/AddNote";
+const Schedule = ({ match, week, note }) => {
   const [key, setKey] = useState("week1");
   const weekData = Array.from(week);
-
+  const [showNote, setShowNote] = useState();
   return (
     <Container>
       <Tabs
@@ -30,15 +33,34 @@ const Schedule = ({ match, week }) => {
                 {match.map(
                   (singleMatch) =>
                     singleMatch.date === singleWeek.dateWeek && (
-                      <SingleScheduleMatch
-                        key={singleMatch.idMatch}
-                        host={singleMatch.host}
-                        guest={singleMatch.guest}
-                        time={singleMatch.time}
-                        date={singleMatch.date}
-                        dateWeek={singleWeek.dateWeek}
-                        singleMatch={singleMatch}
-                      />
+                      <>
+                        <SingleScheduleMatch
+                          key={singleMatch.idMatch}
+                          host={singleMatch.host}
+                          guest={singleMatch.guest}
+                          time={singleMatch.time}
+                          date={singleMatch.date}
+                          dateWeek={singleWeek.dateWeek}
+                          singleMatch={singleMatch}
+                        />
+                        {singleMatch.idMatch !== showNote ? (
+                          <NoteToggle
+                            onClick={() => setShowNote(singleMatch.idMatch)}
+                          />
+                        ) : (
+                          <>
+                            {note.map(
+                              (singleNote) =>
+                                singleMatch.idMatch === singleNote.idNote && (
+                                  <Note action={singleNote.noteType}>
+                                    {singleNote.noteValue}
+                                  </Note>
+                                )
+                            )}
+                            <NoteToggle onClick={() => setShowNote()} />
+                          </>
+                        )}
+                      </>
                     )
                 )}
               </Container>

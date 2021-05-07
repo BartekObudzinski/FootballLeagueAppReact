@@ -3,11 +3,12 @@ import { v4 as matchId } from "uuid";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import FormTeamOption from "./FormOption/FormTeamOption";
 import FormWeekOption from "./FormOption/FormWeekOption";
+import { footballTeams } from "../../data/footballTeams";
 const AddMatch = ({ match, setMatch, week }) => {
-  const [hostFootball, setHostFootball] = useState("");
-  const [guestFootball, setGuestFootball] = useState("");
-  const [dateMatch, setDateMatch] = useState("");
-  const [timeMatch, setTimeMatch] = useState("");
+  const [hostFootball, setHostFootball] = useState(footballTeams[0].name);
+  const [guestFootball, setGuestFootball] = useState(footballTeams[1].name);
+  const [dateMatch, setDateMatch] = useState(week[0].dateWeek);
+  const [timeMatch, setTimeMatch] = useState("12:00");
 
   const AddSingleMatch = (e) => {
     e.preventDefault();
@@ -24,7 +25,6 @@ const AddMatch = ({ match, setMatch, week }) => {
         matchHappend: false,
       },
     ]);
-    console.log("added");
   };
 
   return (

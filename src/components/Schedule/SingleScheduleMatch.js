@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./SingleScheduleMatch.module.css";
 import { Container, Row, Col } from "react-bootstrap";
+
 const SingleScheduleMatch = ({
   host,
   guest,

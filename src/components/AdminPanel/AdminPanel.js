@@ -6,7 +6,7 @@ import FormWeek from "./FormWeek/FormWeek.js";
 
 import FormResult from "./FormResult/FormResult";
 
-const AdminPanel = ({ match, setMatch, week, setWeek }) => {
+const AdminPanel = ({ match, setMatch, week, setWeek, note, setNote }) => {
   const handleRemoveWeek = (itemId) => {
     setWeek(week.filter((item) => item.idWeek !== itemId));
   };
@@ -37,6 +37,8 @@ const AdminPanel = ({ match, setMatch, week, setWeek }) => {
               match={match}
               week={week}
               handleRemoveMatch={handleRemoveMatch}
+              note={note}
+              setNote={setNote}
             />
           </Accordion.Collapse>
         </Card>
