@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./SingleTableRecord.module.css";
 const SingleTableRecord = ({
   position,
   name,
@@ -12,16 +12,34 @@ const SingleTableRecord = ({
   points,
 }) => {
   return (
-    <tr>
-      <th>{position}</th>
-      <th>{name}</th>
-      <th>{matches}</th>
-      <th>{wins}</th>
-      <th>{draws}</th>
-      <th>{loses}</th>
-      <th>{goalScored}</th>
-      <th>{goalLoses}</th>
-      <th>{points}</th>
+    <tr className={styles.wrapper}>
+      <td>{position}</td>
+      <td>{name}</td>
+      <td>
+        {matches.reduce((prevValue, currentValue) => prevValue + currentValue)}
+      </td>
+      <td>
+        {wins.reduce((prevValue, currentValue) => prevValue + currentValue)}
+      </td>
+      <td>
+        {draws.reduce((prevValue, currentValue) => prevValue + currentValue)}
+      </td>
+      <td>
+        {loses.reduce((prevValue, currentValue) => prevValue + currentValue)}
+      </td>
+      <td>
+        {goalScored.reduce(
+          (prevValue, currentValue) => prevValue + currentValue
+        )}
+      </td>
+      <td>
+        {goalLoses.reduce(
+          (prevValue, currentValue) => prevValue + currentValue
+        )}
+      </td>
+      <td>
+        {points.reduce((prevValue, currentValue) => prevValue + currentValue)}
+      </td>
     </tr>
   );
 };

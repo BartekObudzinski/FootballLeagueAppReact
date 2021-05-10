@@ -3,16 +3,20 @@ import { Container, Accordion, Card } from "react-bootstrap";
 import { BsPlusSquare } from "react-icons/bs";
 import AddMatch from "./AddMatch";
 import FormWeek from "./FormWeek/FormWeek.js";
-
 import FormResult from "./FormResult/FormResult";
-
-const AdminPanel = ({ match, setMatch, week, setWeek, note, setNote }) => {
+import AddTeam from "./AddTeam/AddTeam";
+const AdminPanel = ({
+  match,
+  setMatch,
+  week,
+  setWeek,
+  note,
+  setNote,
+  team,
+  setTeam,
+}) => {
   const handleRemoveWeek = (itemId) => {
     setWeek(week.filter((item) => item.idWeek !== itemId));
-  };
-
-  const handleRemoveMatch = (matchId) => {
-    setMatch(match.filter((item) => item.idMatch !== matchId));
   };
 
   return (
@@ -24,7 +28,12 @@ const AdminPanel = ({ match, setMatch, week, setWeek, note, setNote }) => {
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              <AddMatch match={match} setMatch={setMatch} week={week} />
+              <AddMatch
+                match={match}
+                setMatch={setMatch}
+                week={week}
+                team={team}
+              />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -36,9 +45,11 @@ const AdminPanel = ({ match, setMatch, week, setWeek, note, setNote }) => {
             <FormResult
               match={match}
               week={week}
-              handleRemoveMatch={handleRemoveMatch}
               note={note}
               setNote={setNote}
+              team={team}
+              setTeam={setTeam}
+              setMatch={setMatch}
             />
           </Accordion.Collapse>
         </Card>
@@ -52,7 +63,18 @@ const AdminPanel = ({ match, setMatch, week, setWeek, note, setNote }) => {
                 week={week}
                 setWeek={setWeek}
                 handleRemove={handleRemoveWeek}
+                team={team}
               />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Accordion.Toggle as={Card.Header} eventKey="3">
+            <BsPlusSquare /> Add Team
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="3">
+            <Card.Body>
+              <AddTeam team={team} setTeam={setTeam} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>

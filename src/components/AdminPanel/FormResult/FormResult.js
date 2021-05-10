@@ -6,14 +6,43 @@ import FormResultEdit from "../FormResultEdit/FormResultEdit";
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import FormWeekOption from "../FormOption/FormWeekOption";
 import NoteToggle from "../../MatchNote/NoteToggle/NoteToggle";
-import Note from "../../MatchNote/Note/Note";
 import AddNote from "../../MatchNote/AddNote/AddNote";
 
-const FormResult = ({ match, week, handleRemoveMatch, note, setNote }) => {
+import NoteRender from "../NoteRender/NoteRender";
+const FormResult = ({
+  match,
+  week,
+  setMatch,
+  note,
+  setNote,
+  team,
+  setTeam,
+}) => {
   const [resultEdit, setResultEdit] = useState();
   const [chooseWeek, setChooseWeek] = useState(week[0].dateWeek);
   const [showNote, setShowNote] = useState();
 
+  const handleRemoveMatch = (matchId, hos, gues, dat) => {
+    setMatch(match.filter((item) => item.idMatch !== matchId));
+    const findHost = team.find((element) => element.name === hos);
+    const findGuest = team.find((element) => element.name === gues);
+    const indeks = week.findIndex((x) => x.dateWeek === dat);
+    findHost.matches[indeks] = 0;
+    findHost.wins[indeks] = 0;
+    findHost.draws[indeks] = 0;
+    findHost.loses[indeks] = 0;
+    findHost.goalScored[indeks] = 0;
+    findHost.goalLoses[indeks] = 0;
+    findHost.points[indeks] = 0;
+
+    findGuest.matches[indeks] = 0;
+    findGuest.wins[indeks] = 0;
+    findGuest.draws[indeks] = 0;
+    findGuest.loses[indeks] = 0;
+    findGuest.goalScored[indeks] = 0;
+    findGuest.goalLoses[indeks] = 0;
+    findGuest.points[indeks] = 0;
+  };
   return (
     <Card.Body>
       <Row>
@@ -49,7 +78,13 @@ const FormResult = ({ match, week, handleRemoveMatch, note, setNote }) => {
                     <AiTwotoneDelete
                       className={styles.button}
                       onClick={() => {
-                        handleRemoveMatch(singleMatch.idMatch);
+                        handleRemoveMatch(
+                          singleMatch.idMatch,
+
+                          singleMatch.host,
+                          singleMatch.guest,
+                          singleMatch.date
+                        );
                       }}
                     />
                   </Col>
@@ -70,7 +105,11 @@ const FormResult = ({ match, week, handleRemoveMatch, note, setNote }) => {
                     />
                   ) : (
                     <>
-                      <Note />
+                      <NoteRender
+                        singleMatch={singleMatch}
+                        note={note}
+                        setNote={setNote}
+                      />
                       <AddNote
                         noteId={singleMatch.idMatch}
                         note={note}
@@ -87,6 +126,8 @@ const FormResult = ({ match, week, handleRemoveMatch, note, setNote }) => {
               singleMatch={singleMatch}
               setResultEdit={setResultEdit}
               week={week}
+              team={team}
+              setTeam={setTeam}
             />
           ))
       )}

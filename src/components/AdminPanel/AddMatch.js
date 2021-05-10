@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormTeamOption from "./FormOption/FormTeamOption";
 import FormWeekOption from "./FormOption/FormWeekOption";
 import { footballTeams } from "../../data/footballTeams";
-const AddMatch = ({ match, setMatch, week }) => {
+const AddMatch = ({ match, setMatch, week, team }) => {
   const [hostFootball, setHostFootball] = useState(footballTeams[0].name);
   const [guestFootball, setGuestFootball] = useState(footballTeams[1].name);
   const [dateMatch, setDateMatch] = useState(week[0].dateWeek);
@@ -35,7 +35,7 @@ const AddMatch = ({ match, setMatch, week }) => {
           as="select"
           onChange={(e) => setHostFootball(e.target.value)}
         >
-          <FormTeamOption />
+          <FormTeamOption team={team} />
         </Form.Control>
       </Form.Group>
       <Form.Group>
@@ -44,7 +44,7 @@ const AddMatch = ({ match, setMatch, week }) => {
           as="select"
           onChange={(e) => setGuestFootball(e.target.value)}
         >
-          <FormTeamOption />
+          <FormTeamOption team={team} />
         </Form.Control>
       </Form.Group>
       <Row>

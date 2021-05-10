@@ -1,10 +1,8 @@
 import React from "react";
 
-import { footballTeams } from "../../../data/footballTeams";
-
-const FormTeamOption = () => {
-  return footballTeams.map((team) => (
-    <option defaultValue={team.name}>{team.name}</option>
+const FormTeamOption = ({ team }) => {
+  return team.map((singleTeam) => (
+    <option key={singleTeam.name}>{singleTeam.name}</option>
   ));
 };
 

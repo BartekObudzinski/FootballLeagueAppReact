@@ -4,7 +4,7 @@ import SingleScheduleMatch from "./SingleScheduleMatch";
 import styles from "./Schedule.module.css";
 import NoteToggle from "../MatchNote/NoteToggle/NoteToggle";
 import Note from "../MatchNote/Note/Note";
-import AddNote from "../MatchNote/AddNote/AddNote";
+
 const Schedule = ({ match, week, note }) => {
   const [key, setKey] = useState("week1");
   const weekData = Array.from(week);
@@ -51,8 +51,12 @@ const Schedule = ({ match, week, note }) => {
                           <>
                             {note.map(
                               (singleNote) =>
-                                singleMatch.idMatch === singleNote.idNote && (
-                                  <Note action={singleNote.noteType}>
+                                singleMatch.idMatch ===
+                                  singleNote.idMatchNote && (
+                                  <Note
+                                    action={singleNote.noteType}
+                                    key={singleNote.idMatchNote}
+                                  >
                                     {singleNote.noteValue}
                                   </Note>
                                 )

@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
 import { AiFillPlusCircle } from "react-icons/ai";
 import styles from "./AddNote.module.css";
-
+import { v4 as idNote } from "uuid";
 const AddNote = ({ noteId, note, setNote }) => {
   const [noteText, setNoteText] = useState();
-  const [noteAction, setNoteAction] = useState();
+  const [noteAction, setNoteAction] = useState("Goal");
 
   const AddNote = (e) => {
     e.preventDefault();
     setNote([
       ...note,
       {
-        idNote: noteId,
+        idMatchNote: noteId,
+        idNote: idNote(),
         noteValue: noteText,
         noteType: noteAction,
       },

@@ -3,7 +3,13 @@ import styles from "./FormResultEdit.module.css";
 import { Container, Row, Button, Col, Form } from "react-bootstrap";
 import FormWeekOption from "../FormOption/FormWeekOption";
 import FormTeamOption from "../FormOption/FormTeamOption";
-const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
+const FormResultEdit = ({
+  singleMatch,
+  setResultEdit,
+  week,
+  team,
+  setTeam,
+}) => {
   const [editHostResult, setEditHostResult] = useState(singleMatch.hostGoals);
   const [editGuestResult, setEditGuestResult] = useState(
     singleMatch.guestGoals
@@ -15,6 +21,9 @@ const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
 
   const [happend, setHappend] = useState(singleMatch.matchHappend);
 
+  const findHost = team.find((element) => element.name === singleMatch.host);
+  const findGuest = team.find((element) => element.name === singleMatch.guest);
+  var index = week.findIndex((x) => x.dateWeek === singleMatch.date);
   const confirmEdit = () => {
     singleMatch.hostGoals = editHostResult;
     singleMatch.guestGoals = editGuestResult;
@@ -23,6 +32,43 @@ const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
     singleMatch.guest = editGuest;
     singleMatch.date = editDate;
     singleMatch.time = editTime;
+    if (findHost.name === singleMatch.host) {
+      findHost.matches[index] = 1;
+      findHost.goalScored[index] = parseInt(singleMatch.hostGoals);
+      findHost.goalLoses[index] = parseInt(singleMatch.guestGoals);
+    }
+    if (findGuest.name === singleMatch.guest) {
+      findGuest.matches[index] = 1;
+      findGuest.goalScored[index] = parseInt(singleMatch.guestGoals);
+      findGuest.goalLoses[index] = parseInt(singleMatch.hostGoals);
+    }
+    if (singleMatch.hostGoals > singleMatch.guestGoals) {
+      findHost.wins[index] = 1;
+      findGuest.wins[index] = 0;
+      findHost.points[index] = 3;
+      findGuest.points[index] = 0;
+      findGuest.loses[index] = 1;
+      findHost.loses[index] = 0;
+    }
+    if (singleMatch.hostGoals < singleMatch.guestGoals) {
+      findGuest.wins[index] = 1;
+      findHost.wins[index] = 0;
+      findGuest.points[index] = 3;
+      findHost.points[index] = 0;
+      findHost.loses[index] = 1;
+      findGuest.loses[index] = 0;
+    }
+    if (singleMatch.hostGoals === singleMatch.guestGoals) {
+      findGuest.draws[index] = 1;
+      findHost.draws[index] = 1;
+      findGuest.points[index] = 1;
+      findHost.points[index] = 1;
+      findHost.loses[index] = 0;
+      findGuest.loses[index] = 0;
+      findHost.wins[index] = 0;
+      findGuest.wins[index] = 0;
+    }
+
     setResultEdit();
   };
 
@@ -39,7 +85,7 @@ const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
                 value={editHost}
                 onChange={(e) => setEditHost(e.target.value)}
               >
-                <FormTeamOption />
+                <FormTeamOption team={team} />
               </Form.Control>
             </Form.Group>
           </Col>
@@ -95,7 +141,7 @@ const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
                 value={editGuest}
                 onChange={(e) => setEditGuest(e.target.value)}
               >
-                <FormTeamOption />
+                <FormTeamOption team={team} />
               </Form.Control>
             </Form.Group>
           </Col>
@@ -107,6 +153,7 @@ const FormResultEdit = ({ singleMatch, setResultEdit, week }) => {
               className={styles.checkbox}
             />
             <Button onClick={confirmEdit}>Confirm</Button>
+            <Button onClick={() => console.log(findHost)}>JD</Button>
           </Col>
         </Row>
       </Container>

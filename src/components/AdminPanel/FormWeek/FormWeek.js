@@ -3,11 +3,14 @@ import { Button, Form, Col, Row, Container } from "react-bootstrap";
 import { v4 as weekId } from "uuid";
 import FormWeekEdit from "../FormWeekEdit/FormWeekEdit";
 import styles from "./FormWeek.module.css";
-const FormWeek = ({ week, setWeek, handleRemove }) => {
+
+const FormWeek = ({ week, setWeek, handleRemove, team }) => {
   const [weekName, setWeekName] = useState("Week...");
   const [weekDate, setWeekDate] = useState("2021-01-01");
   const [weekEdit, setWeekEdit] = useState();
+
   const AddSingleWeek = (e) => {
+    e.preventDefault();
     setWeek([
       ...week,
       {
@@ -16,7 +19,18 @@ const FormWeek = ({ week, setWeek, handleRemove }) => {
         dateWeek: weekDate,
       },
     ]);
-    console.log(`${weekName} i ${weekDate}`);
+
+    team.map(
+      (element) => (
+        element.matches.push(0),
+        element.wins.push(0),
+        element.draws.push(0),
+        element.loses.push(0),
+        element.goalScored.push(0),
+        element.goalLoses.push(0),
+        element.points.push(0)
+      )
+    );
   };
 
   const handleWeekEdit = (weekSettings) => {
@@ -26,6 +40,7 @@ const FormWeek = ({ week, setWeek, handleRemove }) => {
     handleRemove(weekSettings.idWeek);
   };
 
+  console.log(...team);
   return (
     <Container>
       <Row>
