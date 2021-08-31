@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  color: white;
+  width: 25px;
+  height: 25px;
+  margin: 4px 2px 0px 3px;
+}
+
+.buttonDate {
+  color: white;
+  width: 25px;
+  height: 25px;
+  margin: 4px 2px 0px 3px;
+}
+
+.wrapperButton {
+  margin-top: 10px;
+  background-color: #343a40;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px white solid;
+}
+
+.button:hover {
+  color: #6c6d6e;
+  cursor: pointer;
+}

@@ -1,0 +1,35 @@
+.wrapperCol {
+  border: 1px black solid;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+.button:hover {
+  color: rgb(190, 179, 179);
+}
+.wrapper {
+  background-color: #555b5f;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+}
+
+.iconCardRed {
+  width: 45px;
+  height: 45px;
+  color: red;
+}
+
+.iconCardYellow {
+  width: 45px;
+  height: 45px;
+  color: yellow;
+}

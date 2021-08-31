@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: #343a40;
+  height: 100px;
+
+  color: #aaaeb3;
+  border-bottom: 5px rgb(211, 206, 206) solid;
+}
+
+.teamWrapper {
+  color: rgb(211, 206, 206);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  line-height: 100px;
+}
+
+.resultWrapper {
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  color: white;
+  line-height: 100px;
+}

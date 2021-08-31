@@ -1,0 +1,17 @@
+.wrapperCol {
+  border: 1px black solid;
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+.button:hover {
+  color: rgb(190, 179, 179);
+}
+.wrapper {
+  background-color: #555b5f;
+}

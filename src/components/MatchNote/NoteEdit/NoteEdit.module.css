@@ -1,0 +1,30 @@
+.wrapperButton {
+  background-color: #343a40;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px white solid;
+}
+.button {
+  color: white;
+  width: 25px;
+  height: 25px;
+  margin: 4px 2px 0px 3px;
+}
+
+.wrapperCol {
+  border: 1px black solid;
+  display: flex;
+  align-items: center;
+}
+
+.buttonAdd {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+.button:hover {
+  color: rgb(190, 179, 179);
+}
+.wrapper {
+  background-color: #555b5f;
+}

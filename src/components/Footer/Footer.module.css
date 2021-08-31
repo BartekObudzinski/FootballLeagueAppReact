@@ -1,0 +1,19 @@
+.wrapper {
+  background-color: #343a40;
+  border-radius: 25px 25px 0 0;
+  height: 75px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
